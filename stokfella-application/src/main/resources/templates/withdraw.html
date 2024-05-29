@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Withdraw Page</title>
+    <!-- Linking Bootstrap CSS from webjars -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ff6b6b;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .card-header {
+            background-color: #343a40;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        h1, h4 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: #ff6b6b;
+            border-color: #ff6b6b;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4848;
+            border-color: #ff4848;
+        }
+
+        footer {
+            background-color: #002f6c;
+            color: white;
+            margin-top: 50px;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #00a1e4;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        footer h5, footer p, footer li {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">StockFella App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/add/user}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login/user}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1>Withdraw</h1>
+                </div>
+                <div class="card-body">
+                    <h4 class="font-weight-bold">Account Holder: <span th:text="${user.name} + ' ' + ${user.surname}">John Doe</span></h4>
+                    <h4 class="font-weight-bold">Current Balance: R<span th:text="${account.balance}">1000.00</span></h4>
+                    <form th:action="@{/withdraw/balance}" method="post">
+                        <div class="form-group">
+                            <label for="withdrawAmount">Withdraw Amount</label>
+                            <input type="number" id="withdrawAmount" name="withdrawAmount" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Withdraw</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center text-lg-start">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase">StokFella Management</h5>
+                <p>
+                    Join our stockvel community for a rewarding financial journey. Experience tailored services designed to meet your group'
